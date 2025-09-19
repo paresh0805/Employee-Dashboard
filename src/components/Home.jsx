@@ -10,7 +10,7 @@ const App = () => (
       
       <div id="slide1" className="carousel-item relative w-full">
         <img
-          src="https://i.imgflip.com/8vge7k.jpg"
+          src="https://i.pinimg.com/236x/f8/4d/6e/f84d6ea889a9968d1e25643600a7104d.jpg"
           className="w-full h-auto max-h-[500px] object-contain"
         />
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
