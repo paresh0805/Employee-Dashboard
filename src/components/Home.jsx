@@ -1,30 +1,59 @@
-import React from 'react';
-import { DatePicker } from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-dayjs.extend(customParseFormat);
-const dateFormat = 'YYYY-MM-DD';
 const App = () => (
-  <div className='flex items-center justify-center min-h-screen'>
-  <DatePicker className='flex justify'
-    defaultValue={dayjs('2019-09-03', dateFormat)}
-    minDate={dayjs('2019-08-01', dateFormat)}
-    maxDate={dayjs('2020-10-31', dateFormat)}
-  />
-  <div className="card bg-base-100 w-96 shadow-sm">
-  <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">Card Title</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+  <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-6 p-4">
+    {/* Heading above carousel */}
+    <h1 className="text-3xl font-bold font-sans text-gray-800 text-center">
+      Employee Dashboard jaldi se banado yaar 😭
+    </h1>
+
+    {/* Carousel */}
+    <div className="carousel w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+      
+      <div id="slide1" className="carousel-item relative w-full">
+        <img
+          src="https://i.imgflip.com/8vge7k.jpg"
+          className="w-full h-auto max-h-[500px] object-contain"
+        />
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide4" className="btn btn-circle">❮</a>
+          <a href="#slide2" className="btn btn-circle">❯</a>
+        </div>
+      </div>
+
+      <div id="slide2" className="carousel-item relative w-full">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTW64gLh7EU65cBU9HrtWwLdFyEeudZ1A0Ewg&s"
+          className="w-full h-auto max-h-[500px] object-contain"
+        />
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide1" className="btn btn-circle">❮</a>
+          <a href="#slide3" className="btn btn-circle">❯</a>
+        </div>
+      </div>
+
+      <div id="slide3" className="carousel-item relative w-full">
+        <img
+          src="https://i.pinimg.com/236x/11/d6/fe/11d6fe63d45ac8330a291f7e07300b6c.jpg"
+          className="w-full h-auto max-h-[500px] object-contain"
+        />
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide2" className="btn btn-circle">❮</a>
+          <a href="#slide4" className="btn btn-circle">❯</a>
+        </div>
+      </div>
+
+      <div id="slide4" className="carousel-item relative w-full">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxx4bUTdWAAEZ6JiKWTYTi4LRrsBf9EE7g94p7BOZNv9o4ee4xBIZW4fbOOMbDDJojtAc&usqp=CAU"
+          className="w-full h-auto max-h-[500px] object-contain"
+        />
+        <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
+          <a href="#slide3" className="btn btn-circle">❮</a>
+          <a href="#slide1" className="btn btn-circle">❯</a>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
-  </div>
 );
+
 export default App;
