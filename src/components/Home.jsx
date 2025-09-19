@@ -2,7 +2,7 @@ const App = () => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 space-y-6 p-4">
     {/* Heading above carousel */}
     <h1 className="text-3xl font-bold font-sans text-gray-800 text-center">
-      Employee Dashboard jaldi se banado yaar 😭
+      Bakchodi On Top 😏
     </h1>
 
     {/* Carousel */}
@@ -10,7 +10,7 @@ const App = () => (
       
       <div id="slide1" className="carousel-item relative w-full">
         <img
-          src="https://i.imgflip.com/8vge7k.jpg"
+          src="https://media.licdn.com/dms/image/v2/D5622AQFgNNv2gO6tXg/feedshare-shrink_1280/B56Zkd945xJsAs-/0/1757144391348?e=2147483647&v=beta&t=kHY4woy_-TCxMtYC5Ah8PBxNEpUABYWonqxH9g94siw"
           className="w-full h-auto max-h-[500px] object-contain"
         />
         <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 justify-between">
