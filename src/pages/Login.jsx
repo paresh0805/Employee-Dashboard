@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -7,43 +8,67 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [department, setDepartment] = useState(""); // Initially empty for placeholder
+  const [department, setDepartment] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
     console.log({ loginMethod, email, phone, password, department });
-    // Add your login logic here
+  };
+
+  const formVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" },
+    }),
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-      {/* Card */}
-      <div className="flex flex-col md:flex-row w-full max-w-3xl bg-white rounded-xl shadow-lg overflow-hidden">
-        {/* Left side - Logo */}
-        <div className="md:w-1/2 w-full bg-blue-900 flex items-center justify-center p-4 md:p-6">
-          <img
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-r from-blue-100 via-white to-green-100">
+      <motion.div
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        whileHover={{ scale: 1.01 }}
+        className="flex flex-col md:flex-row w-full max-w-3xl bg-white/70 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden"
+      >
+        {/* Left side - Logo (no floating) */}
+        <div className="md:w-1/2 w-full bg-gradient-to-br from-blue-900 to-green-700 flex items-center justify-center p-4 md:p-6">
+          <motion.img
             src="/assets/black.png"
             alt="Logo"
-            className="w-24 h-24 md:w-60 md:h-60 object-contain"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+            className="w-24 h-24 md:w-60 md:h-60 object-contain drop-shadow-lg"
           />
         </div>
 
         {/* Right side - Login form */}
-        <div className="md:w-1/2 w-full p-4 md:p-6 flex flex-col justify-center">
-          <h1 className="text-xl md:text-2xl font-bold mb-2 text-gray-900 text-center">
+        <motion.div
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="md:w-1/2 w-full p-6 flex flex-col justify-center"
+        >
+          <h1 className="text-2xl font-bold mb-2 text-gray-900 text-center">
             Get started now
           </h1>
-          <p className="text-gray-500 mb-4 md:mb-6 text-sm md:text-base text-center">
+          <p className="text-gray-600 mb-6 text-sm md:text-base text-center">
             Login access to your account
           </p>
 
           {/* Toggle */}
-          <div className="flex border border-green-500 rounded-full mb-4 overflow-hidden">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            className="flex border border-green-500 rounded-full mb-6 overflow-hidden shadow-sm"
+          >
             <button
               type="button"
               onClick={() => setLoginMethod("email")}
-              className={`w-1/2 py-1 rounded-full transition ${
+              className={`w-1/2 py-2 font-medium transition ${
                 loginMethod === "email"
                   ? "bg-blue-900 text-white"
                   : "bg-white text-gray-500"
@@ -54,7 +79,7 @@ const Login = () => {
             <button
               type="button"
               onClick={() => setLoginMethod("phone")}
-              className={`w-1/2 py-1 rounded-full transition ${
+              className={`w-1/2 py-2 font-medium transition ${
                 loginMethod === "phone"
                   ? "bg-blue-900 text-white"
                   : "bg-white text-gray-500"
@@ -62,14 +87,21 @@ const Login = () => {
             >
               Phone Number
             </button>
-          </div>
+          </motion.div>
 
-          <form onSubmit={handleLogin} className="space-y-3">
+          {/* Form */}
+          <motion.form
+            onSubmit={handleLogin}
+            className="space-y-4"
+            initial="hidden"
+            animate="visible"
+          >
             {/* Email or Phone Input */}
             {loginMethod === "email" ? (
-              <div>
+              <motion.div custom={1} variants={formVariant}>
                 <label className="block text-gray-700 mb-1 text-sm">Email</label>
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -77,11 +109,12 @@ const Login = () => {
                   placeholder="Enter your email"
                   required
                 />
-              </div>
+              </motion.div>
             ) : (
-              <div>
-                <label className="block text-gray-700 mb-1 text-sm">Phone Number</label>
-                <input
+              <motion.div custom={1} variants={formVariant}>
+                <label className="block text-gray-700 mb-1 text-sm">Phone</label>
+                <motion.input
+                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -89,14 +122,15 @@ const Login = () => {
                   placeholder="+91 9876543210"
                   required
                 />
-              </div>
+              </motion.div>
             )}
 
             {/* Password */}
-            <div>
+            <motion.div custom={2} variants={formVariant}>
               <label className="block text-gray-700 mb-1 text-sm">Password</label>
               <div className="relative">
-                <input
+                <motion.input
+                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -112,12 +146,13 @@ const Login = () => {
                   {showPassword ? "Hide" : "Show"}
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Department with placeholder */}
-            <div>
+            {/* Department */}
+            <motion.div custom={3} variants={formVariant}>
               <label className="block text-gray-700 mb-1 text-sm">Department</label>
-              <select
+              <motion.select
+                whileFocus={{ scale: 1.02 }}
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 className="w-full border border-green-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-400 text-sm"
@@ -130,37 +165,41 @@ const Login = () => {
                 <option value="Electricity">Electricity</option>
                 <option value="Sewage">Sewage</option>
                 <option value="Garbage">Garbage</option>
-              </select>
-            </div>
+              </motion.select>
+            </motion.div>
 
             {/* Login Button */}
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="submit"
-              className="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800 transition text-sm"
+              className="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800 transition text-sm font-semibold shadow-md"
             >
               Login
-            </button>
+            </motion.button>
 
             {/* Forgot password */}
-            <p
+            <motion.p
+              whileHover={{ scale: 1.05 }}
               className="text-green-500 text-center cursor-pointer hover:underline mt-1 text-xs"
               onClick={() => console.log("Forgot password clicked")}
             >
               Forgot your password?
-            </p>
+            </motion.p>
 
-            {/* Don't have an account */}
+            {/* Signup */}
             <p className="text-gray-500 text-center mt-1 text-xs">
               Don't have an account?{" "}
-              <span
+              <motion.span
+                whileHover={{ scale: 1.05, color: "#2563eb" }}
                 className="text-blue-900 cursor-pointer hover:underline"
                 onClick={() => navigate("/signup")}
               >
                 Sign up
-              </span>
+              </motion.span>
             </p>
 
-            {/* Or sign in with */}
+            {/* Divider */}
             <div className="flex items-center my-2">
               <hr className="flex-grow border-gray-300" />
               <span className="px-2 text-gray-500 text-xs">Or sign in with</span>
@@ -169,18 +208,26 @@ const Login = () => {
 
             {/* Social Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
-              <button className="flex-1 border border-green-500 rounded-md py-1 flex items-center justify-center hover:bg-gray-100 transition">
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: "#f9fafb" }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 border border-green-500 rounded-md py-2 flex items-center justify-center"
+              >
                 <img src="/assets/google.png" alt="Google" className="w-4 h-4 mr-1" />
                 Google
-              </button>
-              <button className="flex-1 border border-green-500 rounded-md py-1 flex items-center justify-center hover:bg-gray-100 transition">
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05, backgroundColor: "#f9fafb" }}
+                whileTap={{ scale: 0.95 }}
+                className="flex-1 border border-green-500 rounded-md py-2 flex items-center justify-center"
+              >
                 <img src="/assets/facebook.png" alt="Facebook" className="w-4 h-4 mr-1" />
                 Facebook
-              </button>
+              </motion.button>
             </div>
-          </form>
-        </div>
-      </div>
+          </motion.form>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };

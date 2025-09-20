@@ -34,6 +34,7 @@
     "bootstrap": "^5.3.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.23.16",
     "iconoir-react": "^7.11.0",
     "lucide-react": "^0.544.0",
     "matter-js": "^0.20.0",
