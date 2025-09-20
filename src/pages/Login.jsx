@@ -23,7 +23,7 @@ const Login = () => {
         {/* Left side - Logo */}
         <div className="md:w-1/2 w-full bg-blue-900 flex items-center justify-center p-4 md:p-6">
           <img
-            src="./src/assets/homelogo.png"
+            src="/assets/homelogo.png"
             alt="Logo"
             className="w-24 h-24 md:w-36 md:h-36 object-contain"
           />
@@ -170,11 +170,11 @@ const Login = () => {
             {/* Social Buttons */}
             <div className="flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0 text-sm">
               <button className="flex-1 border border-green-500 rounded-md py-1 flex items-center justify-center hover:bg-gray-100 transition">
-                <img src="./src/assets/google.png" alt="Google" className="w-4 h-4 mr-1" />
+                <img src="/assets/google.png" alt="Google" className="w-4 h-4 mr-1" />
                 Google
               </button>
               <button className="flex-1 border border-green-500 rounded-md py-1 flex items-center justify-center hover:bg-gray-100 transition">
-                <img src="./src/assets/facebook.png" alt="Facebook" className="w-4 h-4 mr-1" />
+                <img src="/assets/facebook.png" alt="Facebook" className="w-4 h-4 mr-1" />
                 Facebook
               </button>
             </div>
