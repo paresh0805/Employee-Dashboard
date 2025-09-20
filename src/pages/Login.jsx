@@ -23,9 +23,9 @@ const Login = () => {
         {/* Left side - Logo */}
         <div className="md:w-1/2 w-full bg-blue-900 flex items-center justify-center p-4 md:p-6">
           <img
-            src="/assets/homelogo.png"
+            src="/assets/black.png"
             alt="Logo"
-            className="w-24 h-24 md:w-36 md:h-36 object-contain"
+            className="w-24 h-24 md:w-60 md:h-60 object-contain"
           />
         </div>
 
