@@ -14,6 +14,7 @@ import Settings from "./pages/Settings";
 import Overview from "./pages/Overview";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ReportDetails from "./pages/ReportDetails";
 
 // Layout wrapper
 const AppLayout = ({ children }) => {
@@ -43,6 +44,7 @@ function App() {
           {/* Protected Pages */}
           <Route path="/overview" element={<Overview />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/report-details" element={<ReportDetails />} />
           <Route path="/map-view" element={<MapView />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/users" element={<Users />} />

@@ -297,7 +297,7 @@ const Reports = () => {
             {/* Actions */}
             <div className="flex justify-end mt-4 space-x-2">
               <button
-                onClick={handleSaveNotes}
+                onClick={() => navigate("/report-details", { state: { report: selectedReport } })}
                 className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center"
               >
                 <CheckCircle className="mr-2" /> Update Report
