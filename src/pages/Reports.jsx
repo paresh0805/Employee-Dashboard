@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Calendar, Users, Clipboard, DollarSign, Edit2, CheckCircle } from "lucide-react";
 
 const Reports = () => {
   const navigate = useNavigate();
@@ -10,9 +11,7 @@ const Reports = () => {
   const [selectedReport, setSelectedReport] = useState(null);
   const [internalNotes, setInternalNotes] = useState("");
 
-  const handleQuickFilter = (type) => {
-    alert(`Filtering by ${type}`);
-  };
+  const handleQuickFilter = (type) => alert(`Filtering by ${type}`);
 
   const reportsData = [
     {
@@ -199,7 +198,7 @@ const Reports = () => {
         </div>
       </div>
 
-      {/* Floating Card */}
+      {/* Floating Card with Icons */}
       <AnimatePresence>
         {selectedReport && (
           <motion.div
@@ -217,10 +216,14 @@ const Reports = () => {
             </button>
 
             {/* Section 1: Issue Details */}
-            <h2 className="text-xl font-bold mb-2">{selectedReport.report}</h2>
+            <h2 className="text-xl font-bold mb-2 flex items-center">
+              <Clipboard className="mr-2" /> {selectedReport.report}
+            </h2>
             <p className="text-gray-600 mb-4">{selectedReport.shortInfo}</p>
             <div className="mb-4 border-b pb-2">
-              <h3 className="font-semibold mb-1">Issue Details</h3>
+              <h3 className="font-semibold mb-1 flex items-center">
+                <CheckCircle className="mr-2" /> Issue Details
+              </h3>
               <p>
                 <span className="font-semibold">Issue:</span> {selectedReport.issue}
               </p>
@@ -230,14 +233,14 @@ const Reports = () => {
               <p>
                 <span className="font-semibold">Priority:</span> {selectedReport.priority}
               </p>
-              <p>
-                <span className="font-semibold">Location:</span> {selectedReport.location}
+              <p className="flex items-center">
+                <MapPin className="mr-1" /> {selectedReport.location}
               </p>
               <p>
                 <span className="font-semibold">Reported by:</span> {selectedReport.reporter}
               </p>
-              <p>
-                <span className="font-semibold">Date:</span> {selectedReport.date}
+              <p className="flex items-center">
+                <Calendar className="mr-1" /> {selectedReport.date}
               </p>
               {selectedReport.photo && (
                 <img
@@ -250,7 +253,9 @@ const Reports = () => {
 
             {/* Section 2: Assignment Details */}
             <div className="mb-4 border-b pb-2">
-              <h3 className="font-semibold mb-1">Assignment Details</h3>
+              <h3 className="font-semibold mb-1 flex items-center">
+                <Users className="mr-2" /> Assignment Details
+              </h3>
               <p>
                 <span className="font-semibold">Department:</span> {selectedReport.department}
               </p>
@@ -264,7 +269,9 @@ const Reports = () => {
 
             {/* Section 3: Status & Cost */}
             <div className="mb-4 border-b pb-2">
-              <h3 className="font-semibold mb-1">Status & Cost</h3>
+              <h3 className="font-semibold mb-1 flex items-center">
+                <DollarSign className="mr-2" /> Status & Cost
+              </h3>
               <p>
                 <span className="font-semibold">Updated status:</span> {selectedReport.updatedStatus}
               </p>
@@ -275,7 +282,9 @@ const Reports = () => {
 
             {/* Section 4: Internal Notes */}
             <div className="mb-4">
-              <h3 className="font-semibold mb-1">Internal Notes</h3>
+              <h3 className="font-semibold mb-1 flex items-center">
+                <Edit2 className="mr-2" /> Internal Notes
+              </h3>
               <textarea
                 className="w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                 rows={4}
@@ -289,12 +298,12 @@ const Reports = () => {
             <div className="flex justify-end mt-4 space-x-2">
               <button
                 onClick={handleSaveNotes}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 flex items-center"
               >
-                Update Report
+                <CheckCircle className="mr-2" /> Update Report
               </button>
-              <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
-                Contact Reporter
+              <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 flex items-center">
+                <Users className="mr-2" /> Contact Reporter
               </button>
             </div>
           </motion.div>
