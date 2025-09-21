@@ -30,16 +30,25 @@ const Sidebar = () => {
         isCollapsed ? "w-20" : "w-64"
       } transition-width duration-300`}
     >
-      {/* Top: Brand + Collapse button */}
+      {/* Top: Logo + Brand + Collapse button */}
       <div className="flex items-center justify-between p-4 border-b">
-        {!isCollapsed && (
-          <h1
-            className="text-lg font-bold cursor-pointer"
-            onClick={() => navigate("/overview")}
-          >
-            City Sync Admin
-          </h1>
-        )}
+        <div
+          className="flex items-center cursor-pointer"
+          onClick={() => navigate("/overview")}
+        >
+          {/* Logo */}
+          <img
+            src="/assets/homelogo.png" // Replace with your logo path
+            alt="Logo"
+            className={`transition-all duration-300 ${
+              isCollapsed ? "w-5 h-5" : "w-12 h-12 mr-2"
+            }`}
+          />
+          {/* Brand name (hidden when collapsed) */}
+          {!isCollapsed && <h1 className="text-lg font-bold">City Sync Admin</h1>}
+        </div>
+
+        {/* Collapse button */}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="p-1 rounded hover:bg-gray-200"
@@ -56,9 +65,8 @@ const Sidebar = () => {
               key={item.label}
               onClick={() => navigate(item.path)}
               className={`flex items-center gap-3 px-4 py-3 rounded-md hover:bg-gray-100 transition-colors font-medium w-full ${
-                // Default highlight Overview if path is / or /overview
-                (location.pathname === item.path ||
-                  (item.path === "/overview" && location.pathname === "/"))
+                location.pathname === item.path ||
+                (item.path === "/overview" && location.pathname === "/")
                   ? "bg-blue-100 text-blue-600"
                   : "text-gray-700"
               }`}
