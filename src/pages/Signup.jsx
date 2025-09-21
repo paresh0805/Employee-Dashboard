@@ -14,12 +14,45 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSignup = (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
+    const handleSignup = async (e) => {
+  e.preventDefault();
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  const payload = {
+    signupMethod,
+    email,
+    phone,
+    password,
+    department,
+  };
+
+  try {
+    const response = await fetch("url", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Signup successful!");
+      navigate("/"); // Redirect to login or home page
+    } else {
+      alert(data.message || "Signup failed.");
     }
-    console.log({ signupMethod, email, phone, password, department });
+  } catch (error) {
+    console.error("Signup error:", error);
+    alert("An error occurred. Please try again.");
+  }
+};
+   
   };
 
   // Animation variants for staggered effect
