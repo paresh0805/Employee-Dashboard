@@ -14,6 +14,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     console.log({ loginMethod, email, phone, password, department });
+    navigate("/overview");
   };
 
   const formVariant = {
@@ -26,16 +27,16 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-r from-blue-100 via-white to-green-100">
+    <div className="flex items-center justify-center min-h-screen w-full bg-gradient-to-r from-blue-100 via-white to-green-100">
       <motion.div
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         whileHover={{ scale: 1.01 }}
-        className="flex flex-col md:flex-row w-full max-w-3xl bg-white/70 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden"
+        className="flex flex-col md:flex-row w-full max-w-4xl rounded-3xl shadow-xl overflow-hidden"
       >
-        {/* Left side - Logo (no floating) */}
-        <div className="md:w-1/2 w-full bg-gradient-to-br from-blue-900 to-green-700 flex items-center justify-center p-4 md:p-6">
+        {/* Left side - Logo */}
+        <div className="md:w-1/2 w-full bg-gradient-to-br from-blue-900 to-green-700 flex items-center justify-center p-6">
           <motion.img
             src="/assets/black.png"
             alt="Logo"
@@ -51,7 +52,7 @@ const Login = () => {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="md:w-1/2 w-full p-6 flex flex-col justify-center"
+          className="md:w-1/2 w-full p-6 flex flex-col justify-center bg-white"
         >
           <h1 className="text-2xl font-bold mb-2 text-gray-900 text-center">
             Get started now
@@ -60,7 +61,7 @@ const Login = () => {
             Login access to your account
           </p>
 
-          {/* Toggle */}
+          {/* Toggle Email / Phone */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             className="flex border border-green-500 rounded-full mb-6 overflow-hidden shadow-sm"
@@ -101,7 +102,10 @@ const Login = () => {
               <motion.div custom={1} variants={formVariant}>
                 <label className="block text-gray-700 mb-1 text-sm">Email</label>
                 <motion.input
-                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
+                  whileFocus={{
+                    scale: 1.02,
+                    boxShadow: "0 0 8px rgba(0,200,100,0.4)",
+                  }}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -114,7 +118,10 @@ const Login = () => {
               <motion.div custom={1} variants={formVariant}>
                 <label className="block text-gray-700 mb-1 text-sm">Phone</label>
                 <motion.input
-                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
+                  whileFocus={{
+                    scale: 1.02,
+                    boxShadow: "0 0 8px rgba(0,200,100,0.4)",
+                  }}
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -130,7 +137,10 @@ const Login = () => {
               <label className="block text-gray-700 mb-1 text-sm">Password</label>
               <div className="relative">
                 <motion.input
-                  whileFocus={{ scale: 1.02, boxShadow: "0 0 8px rgba(0,200,100,0.4)" }}
+                  whileFocus={{
+                    scale: 1.02,
+                    boxShadow: "0 0 8px rgba(0,200,100,0.4)",
+                  }}
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
