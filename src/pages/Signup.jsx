@@ -44,7 +44,7 @@ const handleSignup = async (e) => {
       alert("Signup successful!");
       navigate("/"); // Redirect to login or home page
     } else {
-      alert(data.message || "Signup failed.");
+      alert(data.success || "Signup failed.");
     }
   } catch (error) {
     console.error("Signup error:", error);
