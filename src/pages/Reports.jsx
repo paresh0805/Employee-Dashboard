@@ -342,7 +342,7 @@ const Reports = () => {
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/reports", {
+        const res = await axios.get("https://backendnewserver-production.up.railway.app/issues", {
           withCredentials: true,
         });
         setReports(res.data);
@@ -364,7 +364,7 @@ const Reports = () => {
   const handleSaveNotes = async () => {
     try {
       await axios.put(
-        `http://localhost:3000/reports/${selectedReport._id}`,
+        `https://backendnewserver-production.up.railway.app/issues/${selectedReport._id}`,
         { internalNotes },
         { withCredentials: true }
       );
