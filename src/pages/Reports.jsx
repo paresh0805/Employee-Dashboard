@@ -345,6 +345,7 @@ const Reports = () => {
         const res = await axios.get("https://backendnewserver-production.up.railway.app/issues", {
           withCredentials: true,
         });
+        console.log(res);
         setReports(res.data);
       } catch (error) {
         console.error("Failed to fetch reports", error);
