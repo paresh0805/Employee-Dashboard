@@ -13,8 +13,7 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const handleSignup = (e) => {
-    const handleSignup = async (e) => {
+const handleSignup = async (e) => {
   e.preventDefault();
 
   if (password !== confirmPassword) {
@@ -31,7 +30,7 @@ const Signup = () => {
   };
 
   try {
-    const response = await fetch("http://localhost:3000", {
+    const response = await fetch("http://backendnewserver-production.up.railway.app/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,8 +51,6 @@ const Signup = () => {
     alert("An error occurred. Please try again.");
   }
 };
-   
-  };
 
   // Animation variants for staggered effect
   const formVariant = {
@@ -240,6 +237,7 @@ const Signup = () => {
               whileTap={{ scale: 0.95 }}
               type="submit"
               className="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800 transition text-sm font-semibold shadow-md"
+              onClick={handleSignup}
             >
               Sign Up
             </motion.button>
