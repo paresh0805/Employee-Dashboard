@@ -237,7 +237,6 @@ const handleSignup = async (e) => {
               whileTap={{ scale: 0.95 }}
               type="submit"
               className="w-full bg-blue-900 text-white py-2 rounded-md hover:bg-blue-800 transition text-sm font-semibold shadow-md"
-              onClick={handleSignup}
             >
               Sign Up
             </motion.button>
