@@ -30,7 +30,7 @@ const handleSignup = async (e) => {
   };
 
   try {
-    const response = await fetch("http://backendnewserver-production.up.railway.app/signup", {
+    const response = await fetch("https://backendnewserver-production.up.railway.app/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
