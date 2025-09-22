@@ -331,7 +331,7 @@ import {
 const Reports = () => {
   const navigate = useNavigate();
 
-  const [category, setReports] = useState([]);
+  const [reports, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("All");
   const [priority, setPriority] = useState("All");
