@@ -331,7 +331,7 @@ import {
 const Reports = () => {
   const navigate = useNavigate();
 
-  const [reports, setReports] = useState([]);
+  const [category, setReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState("All");
   const [priority, setPriority] = useState("All");
@@ -464,7 +464,7 @@ const Reports = () => {
             <table className="w-full">
               <thead>
                 <tr className="text-left border-b">
-                  <th className="p-2">Report</th>
+                  <th className="p-2">Category</th>
                   <th className="p-2">Location</th>
                   <th className="p-2">Status</th>
                   <th className="p-2">Priority</th>
@@ -480,7 +480,7 @@ const Reports = () => {
                     className="border-b cursor-pointer hover:bg-gray-100"
                     onClick={() => openReport(r)}
                   >
-                    <td className="p-2">{r.report}</td>
+                    <td className="p-2">{r.category}</td>
                     <td className="p-2">{r.location}</td>
                     <td className="p-2">{r.status}</td>
                     <td className="p-2">{r.priority}</td>
@@ -514,7 +514,7 @@ const Reports = () => {
 
             {/* Issue Details */}
             <h2 className="text-xl font-bold mb-2 flex items-center">
-              <Clipboard className="mr-2" /> {selectedReport.report}
+              <Clipboard className="mr-2" /> {selectedReport.category}
             </h2>
             <p className="text-gray-600 mb-4">{selectedReport.shortInfo}</p>
             <div className="mb-4 border-b pb-2">
